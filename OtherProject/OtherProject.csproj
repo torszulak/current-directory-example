@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <BaseOutputPath>bin</BaseOutputPath>
+  </PropertyGroup>
+
+	<Target Name="CopyDll" AfterTargets="Build">
+		<ItemGroup>
+			<DataFiles Include="$(ProjectDir)\bin\Debug\net7.0\*.dll" />
+		</ItemGroup>
+
+		<Copy
+			SourceFiles="@(DataFiles)"
+			SkipUnchangedFiles="false"
+			DestinationFolder="$(ProjectDir)\..\CurrentDirectoryExample\bin\Debug\net7.0\plugins"
+			/>
+	</Target>
+</Project>
